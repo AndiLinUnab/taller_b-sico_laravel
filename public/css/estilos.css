@@ -1,34 +1,360 @@
-body {
-    font-family: Arial, sans-serif;
+/* ===================================
+   VARIABLES Y RESET
+   =================================== */
+* {
     margin: 0;
     padding: 0;
-    background-color: #f4f6f9;
+    box-sizing: border-box;
 }
 
+:root {
+    --primary: #6366f1;
+    --primary-dark: #4f46e5;
+    --secondary: #8b5cf6;
+    --accent: #ec4899;
+    --dark: #0f172a;
+    --light: #f8fafc;
+    --gray: #64748b;
+    --card-bg: rgba(255, 255, 255, 0.9);
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background-attachment: fixed;
+    color: var(--dark);
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Efecto de fondo animado */
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+        radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(138, 92, 246, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 40% 20%, rgba(236, 72, 153, 0.2) 0%, transparent 50%);
+    animation: backgroundShift 15s ease infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes backgroundShift {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+/* ===================================
+   NAVEGACIÓN
+   =================================== */
 nav {
-    background-color: #1e3a8a;
-    padding: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 20px 0;
     text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    animation: slideDown 0.5s ease;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 nav a {
     color: white;
-    margin: 0 15px;
+    margin: 0 20px;
     text-decoration: none;
-    font-weight: bold;
+    font-weight: 600;
+    font-size: 1.05rem;
+    padding: 12px 24px;
+    border-radius: 50px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    display: inline-block;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+nav a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50px;
+    transform: scale(0);
+    transition: transform 0.3s ease;
+    z-index: -1;
 }
 
 nav a:hover {
-    text-decoration: underline;
+    transform: translateY(-3px);
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+nav a:hover::before {
+    transform: scale(1);
+}
+
+nav a:active {
+    transform: translateY(-1px);
+}
+
+/* ===================================
+   CONTENEDOR PRINCIPAL
+   =================================== */
+.container {
+    max-width: 800px;
+    margin: 60px auto;
+    padding: 0 20px;
+    position: relative;
+    z-index: 1;
+}
+
+/* ===================================
+   TÍTULOS
+   =================================== */
 h1 {
     text-align: center;
-    margin-top: 40px;
+    margin: 50px 0 40px;
+    font-size: 3rem;
+    font-weight: 800;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.8s ease;
+    letter-spacing: -1px;
 }
 
-p, ul {
-    width: 60%;
-    margin: auto;
-    margin-top: 20px;
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
+/* ===================================
+   CARDS PARA CONTENIDO
+   =================================== */
+p, ul {
+    background: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 40px;
+    margin: 30px auto;
+    max-width: 700px;
+    width: 90%;
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    animation: fadeInUp 0.8s ease 0.2s backwards;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+p::before, ul::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease;
+}
+
+p:hover, ul:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+}
+
+p:hover::before, ul:hover::before {
+    transform: scaleX(1);
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: var(--dark);
+    font-weight: 400;
+}
+
+/* ===================================
+   LISTA DE HABILIDADES/INTERESES
+   =================================== */
+ul {
+    list-style: none;
+    padding: 30px 40px;
+}
+
+ul li {
+    font-size: 1.15rem;
+    margin: 20px 0;
+    padding: 18px 25px;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border-radius: 16px;
+    border-left: 4px solid var(--primary);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    font-weight: 500;
+    color: var(--dark);
+}
+
+ul li::before {
+    content: '✦';
+    position: absolute;
+    left: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--primary);
+    transition: left 0.3s ease;
+}
+
+ul li:hover {
+    transform: translateX(10px);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+    border-left-width: 6px;
+    box-shadow: 0 5px 15px rgba(99, 102, 241, 0.3);
+}
+
+ul li:hover::before {
+    left: 10px;
+}
+
+/* Efecto especial para cada item de la lista */
+ul li:nth-child(1) { animation-delay: 0.3s; border-left-color: #6366f1; }
+ul li:nth-child(2) { animation-delay: 0.4s; border-left-color: #8b5cf6; }
+ul li:nth-child(3) { animation-delay: 0.5s; border-left-color: #ec4899; }
+ul li:nth-child(4) { animation-delay: 0.6s; border-left-color: #f59e0b; }
+ul li:nth-child(5) { animation-delay: 0.7s; border-left-color: #10b981; }
+
+/* ===================================
+   BADGES Y DECORACIONES
+   =================================== */
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin: 5px;
+    box-shadow: 0 4px 10px rgba(99, 102, 241, 0.3);
+}
+
+/* ===================================
+   RESPONSIVE DESIGN
+   =================================== */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2.2rem;
+        margin: 30px 0 25px;
+    }
+    
+    nav a {
+        margin: 5px 10px;
+        padding: 10px 18px;
+        font-size: 0.95rem;
+        display: inline-block;
+    }
+    
+    p, ul {
+        padding: 30px 25px;
+        width: 95%;
+        border-radius: 20px;
+    }
+    
+    ul li {
+        font-size: 1.05rem;
+        padding: 15px 20px;
+    }
+    
+    p {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    nav {
+        padding: 15px 0;
+    }
+    
+    nav a {
+        display: block;
+        margin: 8px auto;
+        max-width: 200px;
+    }
+    
+    p, ul {
+        padding: 25px 20px;
+    }
+}
+
+/* ===================================
+   ANIMACIONES ADICIONALES
+   =================================== */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -1000px 0;
+    }
+    100% {
+        background-position: 1000px 0;
+    }
+}
+
+/* Efecto de carga suave */
+body > * {
+    animation: fadeInUp 0.6s ease backwards;
+}
+
+nav { animation-delay: 0s; }
+h1 { animation-delay: 0.1s; }
+p, ul { animation-delay: 0.2s; }
