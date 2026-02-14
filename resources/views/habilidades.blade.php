@@ -14,9 +14,9 @@
 
     <h1>Mis Habilidades</h1>
     <ul>
-        <li>PHP</li>
-        <li>Laravel</li>
-        <li>Git</li>
+        <li>Kotlin</li>
+        <li>Python</li>
+        <li>Java</li>
     </ul>
 </body>
 </html>

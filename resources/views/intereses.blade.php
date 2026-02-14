@@ -14,9 +14,9 @@
 
     <h1>Mis Intereses</h1>
     <ul>
-        <li>Desarrollo Backend</li>
-        <li>Inteligencia Artificial</li>
-        <li>Diseño de Software</li>
+        <li>Jugar Miencraft PVP 1.8.9</li>
+        <li>Me gusta escuchar Música</li>
+        <li>Me gusta realizar cursos de programación</li>
     </ul>
 </body>
 </html>

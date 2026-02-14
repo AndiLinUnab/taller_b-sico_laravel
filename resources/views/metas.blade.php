@@ -13,6 +13,6 @@
     </nav>
 
     <h1>Mis Metas Profesionales</h1>
-    <p>Convertirme en desarrollador backend profesional y arquitecto de software.</p>
+    <p>Convertirme en desarrollador backend profesional y con un nivel medio de Frontend, casi full stack prácticamente.</p>
 </body>
 </html>

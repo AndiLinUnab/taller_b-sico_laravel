@@ -14,5 +14,8 @@
 
     <h1>Mi Perfil</h1>
     <p>Estudiante de Ingeniería de Sistemas en la UNAB.</p>
+    <p>Edad: 19 años.</p>
+    <p>5 semestre.</p>
+    <p>Soltero.</p>
 </body>
 </html>
