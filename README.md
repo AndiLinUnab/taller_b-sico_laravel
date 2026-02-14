@@ -21,10 +21,10 @@ El proyecto consiste en la creación de una aplicación web con múltiples vista
 
 ## 🛠 Tecnologías Utilizadas
 
-- PHP 8+
+- PHP
 - Laravel
-- HTML5
-- CSS3
+- HTML
+- CSS
 - Git
 - GitHub
 
@@ -34,7 +34,7 @@ El proyecto consiste en la creación de una aplicación web con múltiples vista
 
 Antes de ejecutar el proyecto debes tener instalado:
 
-- PHP 8 o superior
+- PHP
 - Composer
 - Git
 - Servidor local (XAMPP, Laragon o similar)
@@ -102,7 +102,7 @@ El proyecto cuenta con múltiples commits que evidencian el proceso de desarroll
 Andi Lin  
 Estudiante de Ingeniería de Sistemas  
 Universidad Autónoma de Bucaramanga  
-2026
+12 de febrero de 2026
 
 ---
 
